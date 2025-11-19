@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VYRON — Future in Motion</title>
+  <meta name="description" content="VYRON — AI Video. Reinvented. Generate stunning videos with VYRON’s AI engine." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="brand">
+        <div id="vyron-logo" class="logo-lottie"></div>
+        <span class="brand-name">VYRON</span>
+      </div>
+
+      <nav class="nav">
+        <a href="#features" data-i18n="features">Features</a>
+        <a href="#pricing" data-i18n="pricing">Pricing</a>
+        <a href="#demo" class="cta" data-i18n="demo">Get Demo</a>
+      </nav>
+
+      <div class="lang-switch">
+        <button id="enBtn">EN</button>
+        <button id="arBtn">AR</button>
+      </div>
+    </div>
+  </header>
+
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+
+        <div class="hero-left">
+          <h1 data-i18n="hero_title">VYRON — Future in Motion</h1>
+          <p class="lead" data-i18n="hero_sub">Generate high-impact AI videos in minutes. Text → Video, Avatars, Upscale — all from a single platform.</p>
+
+          <div class="hero-ctas">
+            <button id="openDemo" class="btn primary" data-i18n="get_started">Generate Demo</button>
+            <button id="joinWaitlist" class="btn ghost" data-i18n="join_waitlist">Join Waitlist</button>
+          </div>
+
+          <ul class="trust">
+            <li data-i18n="t1">Zero setup • Instant samples</li>
+            <li data-i18n="t2">Pay-per-use pricing</li>
+            <li data-i18n="t3">Designed for creators & brands</li>
+          </ul>
+        </div>
+
+        <aside class="hero-right">
+          <div id="hero-lottie" class="lottie-wrap"></div>
+        </aside>
+
+      </div>
+    </section>
+
+
+    <section id="features" class="container features">
+      <h2 data-i18n="features_title">What VYRON does</h2>
+
+      <div class="grid">
+        <div class="card">
+          <h3 data-i18n="f1_title">Text → Video</h3>
+          <p data-i18n="f1_desc">Turn scripts into high-impact vertical videos.</p>
+        </div>
+
+        <div class="card">
+          <h3 data-i18n="f2_title">AI Presenter</h3>
+          <p data-i18n="f2_desc">Talking avatars with natural lipsync.</p>
+        </div>
+
+        <div class="card">
+          <h3 data-i18n="f3_title">Upscale & Enhance</h3>
+          <p data-i18n="f3_desc">Improve quality and upscale to 4K.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="pricing" class="container pricing">
+      <h2 data-i18n="pricing_title">Pricing</h2>
+
+      <div class="price-grid">
+
+        <div class="price-card">
+          <h3>Starter</h3>
+          <p class="price">$0 / free</p>
+          <p>Demo credits + waitlist priority</p>
+        </div>
+
+        <div class="price-card recommended">
+          <h3>Pay-per-use</h3>
+          <p class="price">From $0.99 / job</p>
+          <p>Best for creators & marketers</p>
+        </div>
+
+        <div class="price-card">
+          <h3>Scale</h3>
+          <p class="price">Custom</p>
+          <p>Enterprise integrations & SLA</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section id="demo" class="container demo">
+      <h2 data-i18n="demo_title">Try a demo (fast)</h2>
+
+      <form id="demoForm" class="demo-form">
+
+        <label data-i18n="prompt_label">Enter a short prompt (10–30 words)</label>
+        <textarea id="prompt" placeholder="e.g. 10s ad for eco coffee, energetic beat, 16:9"></textarea>
+
+        <div class="form-row">
+          <input id="email" type="email" placeholder="Your email (we’ll send the result)" required />
+          <button type="submit" class="btn primary" data-i18n="generate">Generate</button>
+        </div>
+
+        <p class="muted" data-i18n="mvp_note">We manually process demo requests during MVP phase.</p>
+
+      </form>
+    </section>
+
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div>© VYRON — Future in Motion</div>
+      <div class="small">Privacy • Terms</div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lottie-web/build/player/lottie.min.js"></script>
+  <script src="lang.js"></script>
+  <script src="scripts.js"></script>
+</body>
+          </html>
