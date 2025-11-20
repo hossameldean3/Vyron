@@ -1,3 +1,10 @@
+lottie.loadAnimation({
+  container: document.getElementById('vyron-logo'),
+  renderer: 'svg',
+  loop: true,
+  autoplay: true,
+  path: 'assets/vyron_logo.json'
+});
 document.addEventListener('DOMContentLoaded', () => {
 
   // ========== Load Lottie Animation ==========
