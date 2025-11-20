@@ -1,44 +1,26 @@
-lottie.loadAnimation({
-  container: document.getElementById('vyron-logo'),
-  renderer: 'svg',
-  loop: true,
-  autoplay: true,
-  path: 'assets/vyron_logo.json'
-});
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ========== Load Lottie Animation ==========
   const hero = document.getElementById('hero-lottie');
   const vyronLogo = document.getElementById('vyron-logo');
 
-  const lottiePath = "assets/vyron_cinematic_lottie.json";
-
-  fetch(lottiePath)
+  // ==========================
+  // Load Cinematic Hero Motion
+  // ==========================
+  fetch("assets/vyron_cinematic_lottie.json")
     .then(r => {
-      if (!r.ok) throw 1;
+      if (!r.ok) throw new Error("Cinematic not found");
       return r.json();
     })
-    .then(data => {
-      // Hero Motion
+    .then(cinematicData => {
       lottie.loadAnimation({
         container: hero,
         renderer: 'svg',
         loop: false,
         autoplay: true,
-        animationData: data
-      });
-
-      // Logo Motion
-      lottie.loadAnimation({
-        container: vyronLogo,
-        renderer: 'svg',
-        loop: false,
-        autoplay: true,
-        animationData: data
+        animationData: cinematicData
       });
     })
     .catch(() => {
-      // If Lottie not found → fallback
       hero.innerHTML = `
         <div style="width:320px;height:320px;display:flex;align-items:center;justify-content:center;border-radius:18px;background:#06111a;">
           <svg width="180" height="180" viewBox="0 0 1024 1024">
@@ -46,15 +28,22 @@ document.addEventListener('DOMContentLoaded', () => {
           </svg>
         </div>
       `;
-
-      vyronLogo.innerHTML = `
-        <div style="width:48px;height:48px;background:linear-gradient(90deg,#00aaff,#8B3DFF);border-radius:8px"></div>
-      `;
     });
 
+  // ==========================
+  // Load Logo Motion (Loop)
+  // ==========================
+  lottie.loadAnimation({
+    container: vyronLogo,
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: "assets/vyron_logo.json"
+  });
 
-
-  // ========== Demo Form Handling (MVP) ==========
+  // ==========================
+  // Demo Form (MVP)
+  // ==========================
   const demoForm = document.getElementById('demoForm');
 
   demoForm.addEventListener('submit', (e) => {
@@ -68,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Save locally — MVP handling
     const jobs = JSON.parse(localStorage.getItem('vy_jobs') || '[]');
 
     jobs.push({
@@ -83,14 +71,16 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('modal').classList.remove('hidden');
   });
 
-
-  // ========== Close Modal ==========
+  // ==========================
+  // Close Modal
+  // ==========================
   document.getElementById('closeModal').addEventListener('click', () => {
     document.getElementById('modal').classList.add('hidden');
   });
 
-
-  // ========== Smooth Scroll to Demo ==========
+  // ==========================
+  // Smooth Scroll to Demo
+  // ==========================
   const openDemo = document.getElementById('openDemo');
   openDemo.addEventListener('click', () => {
     document.getElementById('prompt').scrollIntoView({ behavior: 'smooth' });
