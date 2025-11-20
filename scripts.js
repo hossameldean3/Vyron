@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   // ---- Correct absolute GitHub Pages paths ----
-  const BASE = "https://hossameldean3.github.io/Vyron";
+  const BASE = "https://hossameldean3.github.io/Vyron/";
 
-  const LOGO_PATH  = `${BASE}/assets/vyron_logo.json`;
-  const HERO_PATH  = `${BASE}/assets/vyron_cinematic_lottie.json`;
+  const LOGO_PATH  = `${BASE}assets/vyron_logo.json`;
+  const HERO_PATH  = `${BASE}assets/vyron_cinematic_lottie.json`;
 
   const hero      = document.getElementById("hero-lottie");
   const vyronLogo = document.getElementById("vyron-logo");
@@ -20,7 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ---- Load Hero Animation ----
   fetch(HERO_PATH)
-    .then(r => r.json())
+    .then(r => {
+      if (!r.ok) throw new Error("Lottie file not found");
+      return r.json();
+    })
     .then(data => {
       lottie.loadAnimation({
         container: hero,
