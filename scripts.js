@@ -1,90 +1,104 @@
 /**********************************************************
- * VYRON — Ultra Professional Script
- * Fixed for GitHub Pages
- * Optimized Lottie Loader + MVP Demo Logic
+ * VYRON — Ultra Professional Script (Final)
+ * Fixed for GitHub Pages, optimized Lottie loader + MVP logic
  **********************************************************/
 
 // ==========================
-// CONFIG
+// CONFIG (تأكد أن اسم الريبو صحيح هنا)
 // ==========================
-const BASE_PATH = "/Vyron/assets/";  
+const REPO_BASE = "/Vyron"; // إذا اسم الريبو مختلف غيّره هنا بنفس الأحرف
+const BASE_PATH = REPO_BASE + "/assets/";
 const CINEMATIC_FILE = BASE_PATH + "vyron_cinematic_lottie.json";
 const LOGO_FILE = BASE_PATH + "vyron_logo.json";
 
-
 // ==========================
-// LOAD LOTTIE ANIMATIONS
+// UTILS
 // ==========================
-function loadLottieAnimation(container, animationData, loop = true, autoplay = true) {
-  return lottie.loadAnimation({
-    container,
-    renderer: "svg",
-    loop,
-    autoplay,
-    animationData
-  });
+function safeEl(id) {
+  return document.getElementById(id) || null;
 }
 
-async function initLottie() {
-  const heroContainer = document.getElementById("hero-lottie");
-  const logoContainer = document.getElementById("vyron-logo");
-
+function loadLottieAnimation(container, animationData, opts = {}) {
+  const settings = {
+    container,
+    renderer: "svg",
+    loop: opts.loop === undefined ? true : !!opts.loop,
+    autoplay: opts.autoplay === undefined ? true : !!opts.autoplay,
+    animationData
+  };
   try {
-    // Load cinematic main animation
-    const cinematicResponse = await fetch(CINEMATIC_FILE);
-    if (!cinematicResponse.ok) throw new Error("Cinematic Lottie missing");
-    const cinematicJSON = await cinematicResponse.json();
+    return lottie.loadAnimation(settings);
+  } catch (err) {
+    console.warn("Lottie load error:", err);
+    return null;
+  }
+}
 
-    // Load logo animation
-    const logoResponse = await fetch(LOGO_FILE);
-    if (!logoResponse.ok) throw new Error("Logo Lottie missing");
-    const logoJSON = await logoResponse.json();
+// ==========================
+// LOTTIE INIT
+// ==========================
+async function initLottie() {
+  const heroContainer = safeEl("hero-lottie");
+  const logoContainer = safeEl("vyron-logo");
 
-    // PLAY ANIMATIONS
-    loadLottieAnimation(heroContainer, cinematicJSON, false, true);
-    loadLottieAnimation(logoContainer, logoJSON, true, true);
+  if (!heroContainer || !logoContainer) {
+    console.warn("Lottie containers missing");
+    return;
+  }
+
+  // تنظيف الحاويات للتأكّد
+  heroContainer.innerHTML = "";
+  logoContainer.innerHTML = "";
+
+  // محاولة تحميل الملفات بالتوازي
+  try {
+    const [cinRes, logoRes] = await Promise.all([
+      fetch(CINEMATIC_FILE),
+      fetch(LOGO_FILE)
+    ]);
+
+    if (!cinRes.ok) throw new Error("Cinematic JSON not found");
+    if (!logoRes.ok) throw new Error("Logo JSON not found");
+
+    const [cinJSON, logoJSON] = await Promise.all([cinRes.json(), logoRes.json()]);
+
+    // شغّل السينمائي (loop=false عادة لintro، لكن نضبط هنا false ثم يمكن تغييره)
+    loadLottieAnimation(heroContainer, cinJSON, { loop: false, autoplay: true });
+
+    // شغّل اللوجو كحلقة مستمرة
+    loadLottieAnimation(logoContainer, logoJSON, { loop: true, autoplay: true });
 
   } catch (err) {
-    console.warn("Lottie failed, using fallback:", err);
+    console.warn("Lottie fallback active:", err);
 
+    // Fallback Hero
     heroContainer.innerHTML = `
       <div style="width:320px;height:320px;display:flex;align-items:center;justify-content:center;border-radius:18px;background:#06111a;">
         <svg width="180" height="180" viewBox="0 0 1024 1024">
-          <text x="50%" y="55%" fill="#00aaff" font-size="80" text-anchor="middle">VYRON</text>
+          <text x="50%" y="55%" fill="#00aaff" font-size="80" text-anchor="middle" font-family="Inter, Arial, sans-serif">VYRON</text>
         </svg>
       </div>
     `;
 
+    // Fallback Logo
     logoContainer.innerHTML = `
-      <div style="width:48px;height:48px;background:linear-gradient(90deg,#00aaff,#8B3DFF);border-radius:8px"></div>
+      <div style="width:48px;height:48px;background:linear-gradient(90deg,#00aaff,#8B3DFF);border-radius:8px;box-shadow:0 6px 18px rgba(0,168,255,0.08)"></div>
     `;
   }
 }
 
-
 // ==========================
-// WAIT FOR DOM READY
-// ==========================
-document.addEventListener("DOMContentLoaded", () => {
-  initLottie();
-  initDemoForm();
-  initModal();
-  initSmoothScroll();
-});
-
-
-// ==========================
-// MVP DEMO FORM HANDLER
+// DEMO FORM HANDLER
 // ==========================
 function initDemoForm() {
-  const form = document.getElementById("demoForm");
+  const form = safeEl("demoForm");
   if (!form) return;
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const prompt = document.getElementById("prompt").value.trim();
-    const email = document.getElementById("email").value.trim();
+    const prompt = (safeEl("prompt") && safeEl("prompt").value || "").trim();
+    const email = (safeEl("email") && safeEl("email").value || "").trim();
 
     if (!prompt || !email) {
       alert("Please enter prompt and email.");
@@ -102,32 +116,44 @@ function initDemoForm() {
 
     localStorage.setItem("vy_jobs", JSON.stringify(jobs));
 
-    document.getElementById("modal").classList.remove("hidden");
+    const modal = safeEl("modal");
+    if (modal) modal.classList.remove("hidden");
   });
 }
 
-
 // ==========================
-// MODAL HANDLER
+// MODAL & UI HELPERS
 // ==========================
 function initModal() {
-  const closeBtn = document.getElementById("closeModal");
+  const closeBtn = safeEl("closeModal");
   if (!closeBtn) return;
 
   closeBtn.addEventListener("click", () => {
-    document.getElementById("modal").classList.add("hidden");
+    const modal = safeEl("modal");
+    if (modal) modal.classList.add("hidden");
   });
 }
 
-
-// ==========================
-// SMOOTH SCROLL
-// ==========================
 function initSmoothScroll() {
-  const openDemo = document.getElementById("openDemo");
+  const openDemo = safeEl("openDemo");
   if (!openDemo) return;
 
   openDemo.addEventListener("click", () => {
-    document.getElementById("prompt").scrollIntoView({ behavior: "smooth" });
+    const prompt = safeEl("prompt");
+    if (prompt) prompt.scrollIntoView({ behavior: "smooth", block: "center" });
   });
 }
+
+// ==========================
+// BOOT
+// ==========================
+document.addEventListener("DOMContentLoaded", () => {
+  // تأخير بسيط للسماح للـ resources بالبدء (يحسن التجربة على GitHub Pages)
+  setTimeout(() => {
+    initLottie();
+  }, 120);
+
+  initDemoForm();
+  initModal();
+  initSmoothScroll();
+});
