@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">VYRON — Logo</title>
+  <desc id="desc">VYRON logo - sharp hybrid mark with neon cyan to purple gradient and wordmark</desc>
+
+  <!-- Definitions: gradient + glow filter -->
+  <defs>
+    <linearGradient id="g-neon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00A8FF"/>
+      <stop offset="55%" stop-color="#4BB0FF"/>
+      <stop offset="100%" stop-color="#8B3DFF"/>
+    </linearGradient>
+
+    <linearGradient id="g-word" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00D1FF"/>
+      <stop offset="60%" stop-color="#32A0FF"/>
+      <stop offset="100%" stop-color="#9B4BFF"/>
+    </linearGradient>
+
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- subtle inner shadow for depth -->
+    <filter id="depth" x="-20%" y="-20%" width="140%" height="140%">
+      <feOffset dx="0" dy="6" result="off"/>
+      <feGaussianBlur in="off" stdDeviation="6" result="blur2"/>
+      <feBlend in="SourceGraphic" in2="blur2" mode="normal"/>
+    </filter>
+
+    <!-- stroke for crisp edges on small sizes -->
+    <mask id="cut">
+      <rect width="100%" height="100%" fill="white"/>
+    </mask>
+  </defs>
+
+  <!-- Background rectangle (invisible; keeps alignment) -->
+  <rect x="0" y="0" width="1200" height="420" fill="none"/>
+
+  <!-- Brandmark: sharp hybrid 'V' -->
+  <g transform="translate(80,40)">
+    <!-- left wing -->
+    <path d="M0 0 L140 360 L200 320 L60 0 Z"
+          fill="url(#g-neon)" filter="url(#glow)" opacity="1"/>
+    <!-- right wing -->
+    <path d="M320 0 L180 360 L120 320 L260 0 Z"
+          fill="url(#g-neon)" filter="url(#glow)"/>
+
+    <!-- center spine (adds 3D edge) -->
+    <path d="M140 360 L180 360 L220 320 L200 320 Z" fill="#061018" opacity="0.9"/>
+
+    <!-- highlight edge -->
+    <path d="M60 0 L140 360 L180 360 L260 0 L220 0 L180 320 L140 320 L100 0 Z"
+          fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="2"/>
+
+    <!-- subtle reflective stroke -->
+    <path d="M40 12 L140 332" stroke="#FFFFFF" stroke-opacity="0.06" stroke-width="6" stroke-linecap="round"/>
+  </g>
+
+  <!-- Wordmark -->
+  <g transform="translate(420,210)">
+    <!-- VYRON text path using system font fallback (renders as text where supported) -->
+    <text x="0" y="0" font-family="Inter, Arial, Helvetica, sans-serif"
+          font-weight="700" font-size="96" letter-spacing="6"
+          fill="url(#g-word)" style="text-transform:uppercase;">
+      VYRON
+    </text>
+
+    <!-- soft neon glow behind wordmark -->
+    <text x="0" y="0" font-family="Inter, Arial, Helvetica, sans-serif"
+          font-weight="700" font-size="96" letter-spacing="6" fill="none"
+          stroke="rgba(0,168,255,0.18)" stroke-width="10" paint-order="stroke">
+      VYRON
+    </text>
+  </g>
+
+  <!-- Small monochrome fallback (for environments not supporting gradients) -->
+  <g transform="translate(420,210)" opacity="0">
+    <text x="0" y="0" font-family="Inter, Arial, Helvetica, sans-serif"
+          font-weight="700" font-size="96" letter-spacing="6" fill="#00A8FF">VYRON</text>
+  </g>
+
+  <!-- Accessibility: invisible rectangle for padding -->
+  <rect x="0" y="0" width="1200" height="420" fill="transparent"/>
+
+</svg>
