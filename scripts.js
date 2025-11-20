@@ -1,95 +1,134 @@
-// --- Configuration: اضبط هذا على اسم المستخدم والريبو الصحيح ---
-const GITHUB_USER = "hossameldean3";   // غيّر لو مختلف
-const REPO_NAME   = "Vyron";          // غيّر لو مختلف
-const GITHUB_BASE = `https://${GITHUB_USER}.github.io/${REPO_NAME}`;
+// Configuration: Adjust to your GitHub username and repo
+const GITHUB_USER = "hossameldean3"; // Update if different
+const REPO_NAME = "Vyron"; // Update if different
+const GITHUB_BASE = `https://\( {GITHUB_USER}.github.io/ \){REPO_NAME}`;
 
-// Paths داخل الريبو
+// Asset paths within the repo
 const LOGO_JSON = `${GITHUB_BASE}/assets/vyron_logo.json`;
 const HERO_JSON = `${GITHUB_BASE}/assets/vyron_cinematic_lottie.json`;
 
-// Ensure DOM loaded
+// DOM ready event
 document.addEventListener("DOMContentLoaded", () => {
-
-  const hero      = document.getElementById("hero-lottie");
+  const hero = document.getElementById("hero-lottie");
   const vyronLogo = document.getElementById("vyron-logo");
-
-  // Load logo by path (Lottie supports path)
-  function tryLoadPath(path, container, opts = {}) {
-    return fetch(path, {cache: "no-cache"})
-      .then(r => {
-        if (!r.ok) throw new Error("Not found");
-        return r.json();
-      })
-      .then(data => {
-        lottie.loadAnimation(Object.assign({
-          container,
-          renderer: "svg",
-          loop: opts.loop !== undefined ? opts.loop : true,
-          autoplay: opts.autoplay !== undefined ? opts.autoplay : true,
-          animationData: data
-        }, opts));
-        return true;
-      })
-      .catch(err => {
-        console.warn("Lottie fetch failed for", path, err);
-        return false;
-      });
-  }
-
-  // 1) Try load logo JSON, else fallback simple gradient box
-  tryLoadPath(LOGO_JSON, vyronLogo, { loop: true, autoplay: true })
-    .then(ok => {
-      if (!ok) {
-        vyronLogo.innerHTML = `<div style="width:48px;height:48px;border-radius:8px;background:linear-gradient(90deg,#00aaff,#8B3DFF);display:flex;align-items:center;justify-content:center;font-weight:700;color:#001">V</div>`;
-      }
-    });
-
-  // 2) Load hero animation JSON (bigger)
-  tryLoadPath(HERO_JSON, hero, { loop: false, autoplay: true })
-    .then(ok => {
-      if (!ok) {
-        // fallback visual placeholder if animation missing
-        hero.innerHTML = `
-          <div style="width:320px;height:320px;display:flex;align-items:center;justify-content:center;border-radius:18px;background:#06111a;color:#00aaff;font-size:20px;">
-            VYRON
-          </div>`;
-      }
-    });
-
-  // ===== Demo form handling (MVP) =====
   const demoForm = document.getElementById("demoForm");
   const generateBtn = document.getElementById("generateBtn");
+  const modal = document.getElementById("modal");
+  const modalMessage = document.getElementById("modal-message");
+  const closeModal = document.getElementById("closeModal");
+  const enBtn = document.getElementById("enBtn");
+  const arBtn = document.getElementById("arBtn");
 
-  demoForm.addEventListener("submit", (e) => {
+  // Function to load Lottie animation with fallback and error handling
+  async function loadLottie(path, container, options = {}) {
+    try {
+      const response = await fetch(path, { cache: "no-cache" });
+      if (!response.ok) throw new Error(`Failed to fetch \( {path}: \){response.status}`);
+      const data = await response.json();
+      lottie.loadAnimation({
+        container,
+        renderer: "svg",
+        loop: options.loop ?? true,
+        autoplay: options.autoplay ?? true,
+        animationData: data,
+        ...options,
+      });
+      return true;
+    } catch (error) {
+      console.warn(`Lottie load failed for ${path}:`, error);
+      return false;
+    }
+  }
+
+  // Load logo with fallback
+  loadLottie(LOGO_JSON, vyronLogo, { loop: true, autoplay: true }).then((success) => {
+    if (!success) {
+      vyronLogo.innerHTML = `
+        <div style="width: 3rem; height: 3rem; border-radius: 0.5rem; background: linear-gradient(90deg, #00aaff, #8B3DFF); display: flex; align-items: center; justify-content: center; font-weight: 700; color: #001;">
+          V
+        </div>`;
+    }
+  });
+
+  // Load hero animation with fallback
+  loadLottie(HERO_JSON, hero, { loop: false, autoplay: true }).then((success) => {
+    if (!success) {
+      hero.innerHTML = `
+        <div style="width: 20rem; height: 20rem; display: flex; align-items: center; justify-content: center; border-radius: 1.125rem; background: #06111a; color: #00aaff; font-size: 1.25rem;">
+          VYRON
+        </div>`;
+    }
+  });
+
+  // Language switcher logic (basic toggle, extend with actual translation if needed)
+  function switchLanguage(lang) {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+    enBtn.classList.toggle("active", lang === "en");
+    arBtn.classList.toggle("active", lang === "ar");
+    enBtn.setAttribute("aria-pressed", lang === "en");
+    arBtn.setAttribute("aria-pressed", lang === "ar");
+    // TODO: Load translations or adjust content dynamically if multi-language support is implemented
+  }
+
+  enBtn.addEventListener("click", () => switchLanguage("en"));
+  arBtn.addEventListener("click", () => switchLanguage("ar"));
+
+  // Demo form handling (MVP with validation and modal feedback)
+  demoForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const prompt = document.getElementById("prompt").value.trim();
-    const email  = document.getElementById("email").value.trim();
+    const email = document.getElementById("email").value.trim();
 
-    if (!prompt || !email) {
-      alert("Please enter prompt and email.");
+    if (!prompt || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showModal("Please enter a valid prompt and email.");
       return;
     }
 
-    // Save locally to localStorage (MVP)
-    const jobs = JSON.parse(localStorage.getItem("vy_jobs") || "[]");
-    jobs.push({
-      id: Date.now(),
-      prompt,
-      email,
-      status: "pending"
-    });
-    localStorage.setItem("vy_jobs", JSON.stringify(jobs));
+    generateBtn.disabled = true;
+    generateBtn.textContent = "Processing...";
 
-    // UI feedback
-    generateBtn.textContent = "Saved — Thanks";
-    setTimeout(() => generateBtn.textContent = "Generate", 1500);
-    alert("Demo request saved. We'll process manually and contact you.");
+    try {
+      // Replace with real backend API (e.g., Formspree, Netlify Functions, or your server)
+      const response = await fetch("https://formspree.io/f/your-form-id", { // Replace with actual endpoint
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt, email }),
+      });
+
+      if (!response.ok) throw new Error("Submission failed");
+
+      showModal("Demo request submitted successfully! We'll process it manually and email you the result.");
+      demoForm.reset();
+    } catch (error) {
+      console.error("Form submission error:", error);
+      showModal("Error submitting request. Please try again later.");
+    } finally {
+      generateBtn.disabled = false;
+      generateBtn.textContent = "Generate";
+    }
   });
 
-  // Smooth scroll
+  // Modal functions
+  function showModal(message) {
+    modalMessage.textContent = message;
+    modal.classList.remove("hidden");
+    modal.focus();
+  }
+
+  closeModal.addEventListener("click", () => modal.classList.add("hidden"));
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) modal.classList.add("hidden");
+  });
+
+  // Smooth scroll to demo
   document.getElementById("openDemo").addEventListener("click", () => {
-    document.getElementById("prompt").scrollIntoView({ behavior: "smooth" });
+    document.getElementById("demo").scrollIntoView({ behavior: "smooth" });
   });
 
+  // Join waitlist (example, extend as needed)
+  document.getElementById("joinWaitlist").addEventListener("click", () => {
+    showModal("Joined waitlist! We'll notify you when ready.");
+  });
 });
