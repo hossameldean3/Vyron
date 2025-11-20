@@ -7,6 +7,10 @@
   --white:#ffffff;
 }
 
+/* ===========================
+   GLOBAL RESET + BASE
+=========================== */
+
 *{
   box-sizing:border-box;
 }
@@ -25,8 +29,13 @@ body{
   padding:28px;
 }
 
+/* ===========================
+   TOPBAR
+=========================== */
+
 .topbar{
   padding:12px 0;
+  backdrop-filter: blur(12px);
 }
 
 .brand{
@@ -35,9 +44,15 @@ body{
   gap:14px;
 }
 
+.logo-lottie{
+  width:48px;
+  height:48px;
+}
+
 .brand .brand-name{
   font-weight:700;
   letter-spacing:1px;
+  font-size:20px;
 }
 
 .nav{
@@ -49,6 +64,12 @@ body{
 .nav a{
   color:var(--muted);
   text-decoration:none;
+  font-weight:500;
+  transition:0.2s;
+}
+
+.nav a:hover{
+  color:var(--white);
 }
 
 .nav .cta{
@@ -58,6 +79,10 @@ body{
   color:#001;
   font-weight:700;
 }
+
+/* ===========================
+   HERO
+=========================== */
 
 .hero{
   padding:48px 0;
@@ -84,6 +109,9 @@ body{
 h1{
   font-size:46px;
   margin:0 0 12px;
+  background:linear-gradient(90deg,var(--neon),var(--accent));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
 .lead{
@@ -92,17 +120,33 @@ h1{
   margin-bottom:18px;
 }
 
+.hero-ctas{
+  display:flex;
+  gap:14px;
+  margin-top:14px;
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
 .btn{
   padding:10px 16px;
   border-radius:10px;
   border:0;
   cursor:pointer;
+  transition:0.25s ease;
 }
 
 .btn.primary{
   background:linear-gradient(90deg,var(--neon),var(--accent));
   color:#001;
   font-weight:700;
+  animation:pulseButton 2.8s ease-in-out infinite;
+}
+
+.btn.primary:hover{
+  transform:scale(1.07);
 }
 
 .btn.ghost{
@@ -110,6 +154,21 @@ h1{
   border:1px solid rgba(255,255,255,0.06);
   color:var(--white);
 }
+
+.btn.ghost:hover{
+  border-color:rgba(255,255,255,0.2);
+}
+
+/* CTA animation */
+@keyframes pulseButton {
+  0% { box-shadow: 0 0 0 rgba(0,255,255,0.0); }
+  50% { box-shadow: 0 0 20px rgba(0,255,255,0.4); }
+  100% { box-shadow: 0 0 0 rgba(0,255,255,0.0); }
+}
+
+/* ===========================
+   FEATURES SECTION
+=========================== */
 
 .grid{
   display:grid;
@@ -122,7 +181,17 @@ h1{
   background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
   padding:18px;
   border-radius:12px;
+  transition:0.25s ease;
 }
+
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 30px rgba(0,168,255,0.06);
+}
+
+/* ===========================
+   PRICING
+=========================== */
 
 .pricing .price-grid{
   display:flex;
@@ -135,12 +204,22 @@ h1{
   padding:18px;
   border-radius:10px;
   text-align:center;
+  transition:0.25s ease;
+}
+
+.price-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 30px rgba(0,168,255,0.06);
 }
 
 .price-card.recommended{
   box-shadow:0 10px 30px rgba(0,168,255,0.08);
   transform:translateY(-6px);
 }
+
+/* ===========================
+   LOTTIE PLAYER
+=========================== */
 
 .lottie-wrap{
   width:360px;
@@ -152,6 +231,10 @@ h1{
   background:linear-gradient(180deg, rgba(0,168,255,0.06), transparent);
   box-shadow:0 8px 40px rgba(0,0,0,0.6);
 }
+
+/* ===========================
+   FORM
+=========================== */
 
 .demo-form textarea{
   width:100%;
@@ -178,12 +261,20 @@ h1{
   color:var(--white);
 }
 
+/* ===========================
+   FOOTER
+=========================== */
+
 .footer{
   padding:28px 0;
   color:var(--muted);
   display:flex;
   justify-content:space-between;
 }
+
+/* ===========================
+   MODAL
+=========================== */
 
 .modal{
   position:fixed;
@@ -214,4 +305,27 @@ h1{
   background:transparent;
   color:#fff;
   font-size:26px;
+}
+
+/* ===========================
+   PAGE REVEAL ANIMATIONS
+=========================== */
+
+.fade-in{
+  opacity:0;
+  transform:translateY(15px);
+  animation:fadeIn 0.8s ease forwards;
+}
+
+.fade-in-delay{
+  opacity:0;
+  transform:translateY(15px);
+  animation:fadeIn 1.2s ease forwards;
+}
+
+@keyframes fadeIn{
+  to{
+    opacity:1;
+    transform:translateY(0);
   }
+}
