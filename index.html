@@ -1,15 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VYRON — AI Video. Reinvented. Generate stunning videos with VYRON’s AI engine.">
+  <meta name="keywords" content="AI video generation, text to video, AI presenter, video upscale, AI tools">
+  <meta property="og:title" content="VYRON — Future in Motion">
+  <meta property="og:description" content="Generate high-impact AI videos in minutes.">
+  <meta property="og:image" content="https://yourdomain.com/assets/og-image.jpg"> <!-- Replace with actual OG image -->
+  <meta property="og:url" content="https://yourdomain.com">
   <title>VYRON — Future in Motion</title>
-  <meta name="description" content="VYRON — AI Video. Reinvented. Generate stunning videos with VYRON’s AI engine." />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Add favicon for professionalism -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"> <!-- Preconnect for faster font loading -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <header class="topbar">
+  <header class="topbar" role="banner">
     <div class="container header-row">
       <div class="brand">
         <div id="vyron-logo" class="logo-lottie" aria-hidden="true"></div>
@@ -22,18 +31,18 @@
         <a href="#demo" class="cta">Get Demo</a>
       </nav>
 
-      <div class="lang-switch" aria-hidden="true">
-        <button id="enBtn" class="lang-btn">EN</button>
-        <button id="arBtn" class="lang-btn">AR</button>
+      <div class="lang-switch" role="region" aria-label="Language switcher">
+        <button id="enBtn" class="lang-btn active" aria-pressed="true">EN</button>
+        <button id="arBtn" class="lang-btn" aria-pressed="false">AR</button>
       </div>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
+  <main id="main-content" role="main">
+    <section class="hero" aria-labelledby="hero-title">
       <div class="container hero-inner">
         <div class="hero-left">
-          <h1>VYRON — Future in Motion</h1>
+          <h1 id="hero-title">VYRON — Future in Motion</h1>
           <p class="lead">Generate high-impact AI videos in minutes. Text → Video, Avatars, Upscale — all from a single platform.</p>
 
           <div class="hero-ctas">
@@ -48,60 +57,60 @@
           </ul>
         </div>
 
-        <aside class="hero-right">
-          <div id="hero-lottie" class="lottie-wrap" aria-hidden="true"></div>
+        <aside class="hero-right" aria-hidden="true">
+          <div id="hero-lottie" class="lottie-wrap"></div>
         </aside>
       </div>
     </section>
 
-    <section id="features" class="container features">
-      <h2>What VYRON can do</h2>
+    <section id="features" class="container features" aria-labelledby="features-title">
+      <h2 id="features-title">What VYRON can do</h2>
       <div class="grid">
-        <div class="card">
+        <article class="card">
           <h3>Text → Video</h3>
           <p>Turn scripts into high-impact vertical videos.</p>
-        </div>
-        <div class="card">
+        </article>
+        <article class="card">
           <h3>AI Presenter</h3>
           <p>Talking avatars with natural lipsync.</p>
-        </div>
-        <div class="card">
+        </article>
+        <article class="card">
           <h3>Upscale & Enhance</h3>
           <p>Improve quality and upscale to 4K.</p>
-        </div>
+        </article>
       </div>
     </section>
 
-    <section id="pricing" class="container pricing">
-      <h2>Pricing</h2>
+    <section id="pricing" class="container pricing" aria-labelledby="pricing-title">
+      <h2 id="pricing-title">Pricing</h2>
       <div class="price-grid">
-        <div class="price-card">
+        <article class="price-card">
           <h3>Starter</h3>
           <p class="price">$0 / free</p>
           <p>Demo credits + waitlist priority</p>
-        </div>
-        <div class="price-card recommended">
+        </article>
+        <article class="price-card recommended">
           <h3>Pay-per-use</h3>
           <p class="price">From $0.99 / job</p>
           <p>Best for creators & marketers</p>
-        </div>
-        <div class="price-card">
+        </article>
+        <article class="price-card">
           <h3>Scale</h3>
           <p class="price">Custom</p>
           <p>Enterprise integrations & SLA</p>
-        </div>
+        </article>
       </div>
     </section>
 
-    <section id="demo" class="container demo">
-      <h2>Try a demo (fast)</h2>
+    <section id="demo" class="container demo" aria-labelledby="demo-title">
+      <h2 id="demo-title">Try a demo (fast)</h2>
 
       <form id="demoForm" class="demo-form" novalidate>
         <label for="prompt">Enter a short prompt (10–30 words)</label>
-        <textarea id="prompt" placeholder="e.g. 10s ad for eco coffee, energetic beat, 16:9"></textarea>
+        <textarea id="prompt" placeholder="e.g. 10s ad for eco coffee, energetic beat, 16:9" required aria-required="true"></textarea>
 
         <div class="form-row">
-          <input id="email" type="email" placeholder="Your email (we’ll send the result)" required />
+          <input id="email" type="email" placeholder="Your email (we’ll send the result)" required aria-required="true" />
           <button type="submit" class="btn primary" id="generateBtn">Generate</button>
         </div>
 
@@ -110,16 +119,26 @@
     </section>
   </main>
 
-  <footer class="footer">
+  <footer class="footer" role="contentinfo">
     <div class="container">
       <div>© VYRON — Future in Motion</div>
-      <div class="small">Privacy • Terms</div>
+      <nav class="small" aria-label="Footer navigation">
+        <a href="/privacy">Privacy</a> • <a href="/terms">Terms</a>
+      </nav>
     </div>
   </footer>
 
-  <!-- Lottie player -->
-  <script src="https://unpkg.com/lottie-web/build/player/lottie.min.js"></script>
-  <!-- Main script -->
-  <script src="scripts.js"></script>
+  <!-- Modal for feedback or waitlist -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-inner">
+      <h2 id="modal-title">Success</h2>
+      <p id="modal-message"></p>
+      <button id="closeModal" class="btn ghost">Close</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/lottie-web@latest/build/player/lottie.min.js" defer></script>
+  <script src="scripts.js" defer></script>
 </body>
 </html>
