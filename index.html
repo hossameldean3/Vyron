@@ -1,402 +1,432 @@
-<!doctype html>
-<html lang="en" dir="ltr">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>VYRON — AI Video Generator | Create Stunning Videos in Seconds</title>
-  <meta name="description" content="Transform text into professional AI videos with VYRON. Generate videos with AI presenters, upscale to 4K, and create stunning content in minutes." />
-  <meta name="keywords" content="AI video, video generator, text to video, AI presenter, video upscale" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="preload" as="image" href="assets/hero-placeholder.jpg" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VYRON - أنشئ فيديوهات AI احترافية في دقائق | الربح من الذكاء الاصطناعي</title>
+    <meta name="description" content="أنشئ فيديوهات احترافية بالذكاء الاصطناعي في دقائق. لا تحتاج خبرة في التصميم. اربح من إنشاء فيديوهات للسوشيال ميديا، إعلانات، ومحتوى تعليمي.">
+    <meta name="keywords" content="فيديوهات ذكاء اصطناعي, صناعة فيديوهات, أرباح من الإنترنت, فيديوهات سوشيال ميديا">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 </head>
-
 <body>
-  <!-- Loading Screen -->
-  <div id="loading" class="loading-screen">
-    <div class="loading-spinner"></div>
-    <p>Loading VYRON...</p>
-  </div>
-
-  <header class="topbar">
-    <div class="container header-row">
-      <div class="brand">
-        <div id="vyron-logo" class="logo-lottie" aria-label="VYRON Logo">
-          <div class="logo-fallback">V</div>
+    <!-- 🔥 شاشة التحميل -->
+    <div id="loading" class="loading-screen">
+        <div class="loading-content">
+            <div class="logo-animation">
+                <div class="logo-circle"></div>
+                <div class="logo-text">VYRON</div>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <p>جاري تحميل مستقبل الفيديو...</p>
         </div>
-        <span class="brand-name">VYRON</span>
-      </div>
-
-      <nav class="nav" aria-label="Main navigation">
-        <a href="#features" class="nav-link">Features</a>
-        <a href="#pricing" class="nav-link">Pricing</a>
-        <a href="#examples" class="nav-link">Examples</a>
-        <a href="#demo" class="cta nav-cta">Try Demo</a>
-      </nav>
-
-      <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
     </div>
-  </header>
 
-  <main>
-    <!-- Hero Section -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="container hero-inner">
-        <div class="hero-left">
-          <div class="badge">AI-Powered Video Generation</div>
-          <h1 id="hero-title">Create Stunning <span class="gradient-text">AI Videos</span> in Seconds</h1>
-          <p class="lead">Transform your ideas into professional videos with our advanced AI. Text-to-video, realistic avatars, and 4K enhancement — all in one platform.</p>
-
-          <div class="hero-ctas">
-            <button id="openDemo" class="btn primary" aria-label="Try demo video generator">
-              <span class="btn-text">Generate Demo Video</span>
-              <div class="btn-loader" hidden></div>
-            </button>
-            <button id="joinWaitlist" class="btn secondary">Join Waitlist</button>
-          </div>
-
-          <div class="trust-badges">
-            <div class="trust-item">
-              <span class="trust-icon">⚡</span>
-              <span>Zero setup • Instant samples</span>
-            </div>
-            <div class="trust-item">
-              <span class="trust-icon">💳</span>
-              <span>Pay-per-use pricing</span>
-            </div>
-            <div class="trust-item">
-              <span class="trust-icon">🎯</span>
-              <span>For creators & brands</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-right">
-          <div class="hero-visual">
-            <div id="hero-lottie" class="lottie-wrap" aria-hidden="true">
-              <div class="lottie-fallback">
-                <div class="video-preview">
-                  <div class="video-placeholder"></div>
-                  <div class="play-indicator"></div>
+    <!-- 🎯 الهيدر -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="brand">
+                    <div class="logo">
+                        <span class="logo-icon">🎬</span>
+                        <span class="logo-text">VYRON</span>
+                    </div>
+                    <span class="tagline">Future in Motion</span>
                 </div>
-              </div>
+
+                <nav class="nav" id="mainNav">
+                    <a href="#home" class="nav-link active">الرئيسية</a>
+                    <a href="#features" class="nav-link">المميزات</a>
+                    <a href="#examples" class="nav-link">نماذج أعمال</a>
+                    <a href="#pricing" class="nav-link">الأسعار</a>
+                    <a href="#testimonials" class="nav-link">آراء العملاء</a>
+                    <a href="#demo" class="nav-link cta-button">جرب مجاناً</a>
+                </nav>
+
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
-            <div class="floating-card card-1">
-              <div class="card-icon">🎬</div>
-              <p>10s ad generated</p>
+        </div>
+    </header>
+
+    <!-- 🚀 الهيرو سيكشن -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
             </div>
-            <div class="floating-card card-2">
-              <div class="card-icon">⏱️</div>
-              <p>45s processing</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats" aria-label="Platform statistics">
-      <div class="container">
-        <div class="stats-grid">
-          <div class="stat">
-            <div class="stat-number">10K+</div>
-            <div class="stat-label">Videos Generated</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">4.8/5</div>
-            <div class="stat-label">User Rating</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">99%</div>
-            <div class="stat-label">Uptime</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">2min</div>
-            <div class="stat-label">Average Processing</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="features" aria-labelledby="features-title">
-      <div class="container">
-        <div class="section-header">
-          <h2 id="features-title">What VYRON Can Do</h2>
-          <p class="section-subtitle">Powerful AI tools to transform your content creation</p>
-        </div>
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon">📝</div>
-            <h3>Text → Video</h3>
-            <p>Transform scripts into engaging vertical videos with automatic scene generation and motion effects.</p>
-            <ul class="feature-list">
-              <li>Multiple aspect ratios</li>
-              <li>Auto scene detection</li>
-              <li>Style presets</li>
-            </ul>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">👨‍💼</div>
-            <h3>AI Presenter</h3>
-            <p>Realistic digital avatars with natural lip-sync and facial expressions for professional presentations.</p>
-            <ul class="feature-list">
-              <li>Multiple avatars</li>
-              <li>40+ languages</li>
-              <li>Custom voices</li>
-            </ul>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">🚀</div>
-            <h3>Upscale & Enhance</h3>
-            <p>Convert low-quality videos to crisp 4K with enhanced colors, stabilization, and noise reduction.</p>
-            <ul class="feature-list">
-              <li>4K upscaling</li>
-              <li>Color correction</li>
-              <li>Stabilization</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Examples Section -->
-    <section id="examples" class="examples" aria-labelledby="examples-title">
-      <div class="container">
-        <div class="section-header">
-          <h2 id="examples-title">See VYRON in Action</h2>
-          <p class="section-subtitle">Real examples generated by our AI</p>
-        </div>
-        <div class="examples-grid">
-          <div class="example-card">
-            <div class="example-placeholder">
-              <button class="play-btn" aria-label="Play example video">▶</button>
-            </div>
-            <div class="example-info">
-              <h4>Eco Coffee Ad</h4>
-              <p>"10s ad for eco-friendly coffee, energetic music, 16:9"</p>
-            </div>
-          </div>
-          <div class="example-card">
-            <div class="example-placeholder">
-              <button class="play-btn" aria-label="Play example video">▶</button>
-            </div>
-            <div class="example-info">
-              <h4>Product Demo</h4>
-              <p>"AI presenter explaining smartphone features, professional tone"</p>
-            </div>
-          </div>
-          <div class="example-card">
-            <div class="example-placeholder">
-              <button class="play-btn" aria-label="Play example video">▶</button>
-            </div>
-            <div class="example-info">
-              <h4>Social Media Clip</h4>
-              <p>"30s fitness motivation, vertical format, upbeat soundtrack"</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="pricing" aria-labelledby="pricing-title">
-      <div class="container">
-        <div class="section-header">
-          <h2 id="pricing-title">Simple, Transparent Pricing</h2>
-          <p class="section-subtitle">No hidden fees. Cancel anytime.</p>
-        </div>
-        <div class="pricing-grid">
-          <div class="pricing-card">
-            <div class="plan-badge">Starter</div>
-            <div class="price">$0 <span class="price-period">/ free</span></div>
-            <ul class="plan-features">
-              <li>3 demo credits</li>
-              <li>Waitlist priority</li>
-              <li>Basic templates</li>
-              <li>720p output</li>
-            </ul>
-            <button class="btn outline">Get Started</button>
-          </div>
-          
-          <div class="pricing-card featured">
-            <div class="plan-badge popular">Most Popular</div>
-            <div class="price">$0.99 <span class="price-period">/ job</span></div>
-            <ul class="plan-features">
-              <li>Pay-per-use</li>
-              <li>All AI features</li>
-              <li>1080p output</li>
-              <li>Commercial license</li>
-              <li>Priority support</li>
-            </ul>
-            <button class="btn primary">Choose Plan</button>
-          </div>
-          
-          <div class="pricing-card">
-            <div class="plan-badge">Scale</div>
-            <div class="price">Custom</div>
-            <ul class="plan-features">
-              <li>Enterprise grade</li>
-              <li>4K upscaling</li>
-              <li>API access</li>
-              <li>SLA guarantee</li>
-              <li>Dedicated support</li>
-            </ul>
-            <button class="btn outline">Contact Sales</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Demo Section -->
-    <section id="demo" class="demo" aria-labelledby="demo-title">
-      <div class="container">
-        <div class="demo-container">
-          <div class="demo-content">
-            <h2 id="demo-title">Try VYRON Now</h2>
-            <p class="demo-subtitle">Generate your first AI video in seconds</p>
-            
-            <form id="demoForm" class="demo-form" novalidate>
-              <div class="form-group">
-                <label for="prompt" class="form-label">Describe your video idea</label>
-                <textarea 
-                  id="prompt" 
-                  class="form-input"
-                  placeholder="e.g., Create a 15-second ad for eco-friendly coffee with energetic music in 16:9 format..."
-                  minlength="10"
-                  maxlength="200"
-                  rows="3"
-                  required
-                ></textarea>
-                <div class="char-count"><span id="charCount">0</span>/200</div>
-              </div>
-
-              <div class="form-group">
-                <label for="email" class="form-label">Your email for results</label>
-                <input 
-                  id="email" 
-                  type="email" 
-                  class="form-input"
-                  placeholder="Enter your email to receive the video..."
-                  required
-                />
-              </div>
-
-              <div class="form-options">
-                <div class="option-group">
-                  <label class="option-label">Video Length</label>
-                  <div class="option-buttons">
-                    <button type="button" class="option-btn active" data-value="10">10s</button>
-                    <button type="button" class="option-btn" data-value="15">15s</button>
-                    <button type="button" class="option-btn" data-value="30">30s</button>
-                  </div>
-                </div>
-                
-                <div class="option-group">
-                  <label class="option-label">Aspect Ratio</label>
-                  <div class="option-buttons">
-                    <button type="button" class="option-btn active" data-value="16:9">16:9</button>
-                    <button type="button" class="option-btn" data-value="9:16">9:16</button>
-                    <button type="button" class="option-btn" data-value="1:1">1:1</button>
-                  </div>
-                </div>
-              </div>
-
-              <button type="submit" class="btn primary full-width" id="generateBtn">
-                <span class="btn-text">Generate Video</span>
-                <div class="btn-loader" hidden></div>
-              </button>
-
-              <p class="form-note">
-                <span class="info-icon">ℹ️</span>
-                We process demo requests manually during MVP phase. You'll receive your video within 24 hours.
-              </p>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer" aria-label="Footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-brand">
-          <div class="brand">
-            <div class="logo-fallback small">V</div>
-            <span class="brand-name">VYRON</span>
-          </div>
-          <p class="footer-tagline">Future in Motion</p>
-          <p class="footer-desc">Creating the next generation of AI-powered video tools for creators worldwide.</p>
         </div>
         
-        <div class="footer-links">
-          <div class="footer-column">
-            <h4>Product</h4>
-            <a href="#features">Features</a>
-            <a href="#examples">Examples</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#demo">Demo</a>
-          </div>
-          
-          <div class="footer-column">
-            <h4>Company</h4>
-            <a href="#">About</a>
-            <a href="#">Blog</a>
-            <a href="#">Careers</a>
-            <a href="#">Contact</a>
-          </div>
-          
-          <div class="footer-column">
-            <h4>Support</h4>
-            <a href="#">Help Center</a>
-            <a href="#">Documentation</a>
-            <a href="#">API Status</a>
-            <a href="#">Community</a>
-          </div>
-          
-          <div class="footer-column">
-            <h4>Legal</h4>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Cookie Policy</a>
-            <a href="#">Security</a>
-          </div>
-        </div>
-      </div>
-      
-      <div class="footer-bottom">
-        <div class="footer-copyright">
-          © 2024 VYRON — Future in Motion. All rights reserved.
-        </div>
-        <div class="footer-social">
-          <a href="#" aria-label="Twitter">🐦</a>
-          <a href="#" aria-label="LinkedIn">💼</a>
-          <a href="#" aria-label="GitHub">🐙</a>
-          <a href="#" aria-label="YouTube">📺</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-bolt"></i>
+                    <span>المنصة العربية الأولى للفيديوهات بالذكاء الاصطناعي</span>
+                </div>
 
-  <!-- Success Modal -->
-  <div id="successModal" class="modal hidden" role="dialog" aria-labelledby="modalTitle">
-    <div class="modal-overlay"></div>
-    <div class="modal-content">
-      <div class="modal-icon">🎉</div>
-      <h3 id="modalTitle">Demo Request Received!</h3>
-      <p>We're processing your video and will email it to you within 24 hours.</p>
-      <button class="btn primary" id="modalClose">Awesome, Thanks!</button>
-    </div>
-  </div>
+                <h1 class="hero-title">
+                    <span class="title-line">أنشئ فيديوهات</span>
+                    <span class="title-line highlight">إحترافية بالذكاء الاصطناعي</span>
+                    <span class="title-line">بدون أي خبرة تقنية!</span>
+                </h1>
 
-  <!-- Lottie player -->
-  <script src="https://unpkg.com/lottie-web/build/player/lottie.min.js"></script>
-  <!-- Main script -->
-  <script src="scripts.js"></script>
-</body>
-</html>
+                <p class="hero-subtitle">
+                    حوّل أفكارك إلى فيديوهات مذهلة خلال دقائق. أربح من إنشاء محتوى لوسائل التواصل الاجتماعي، 
+                    الإعلانات، والفيديوهات التعليمية - كل ذلك بنقرة واحدة!
+                </p>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="15427">0</div>
+                        <div class="stat-label">فيديو تم إنشاؤه</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="4895">0</div>
+                        <div class="stat-label">عميل راضي</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="98">0</div>
+                        <div class="stat-label">٪ رضا العملاء</div>
+                    </div>
+                </div>
+
+                <div class="hero-actions">
+                    <button class="btn btn-primary btn-large" onclick="scrollToDemo()">
+                        <i class="fas fa-play-circle"></i>
+                        أنشئ أول فيديو لك - مجاني
+                    </button>
+                    <button class="btn btn-secondary btn-large" onclick="showVideoExamples()">
+                        <i class="fas fa-eye"></i>
+                        شاهد نماذج أعمال حقيقية
+                    </button>
+                </div>
+
+                <div class="trusted-by">
+                    <p>موثوق من قبل:</p>
+                    <div class="trusted-logos">
+                        <div class="trusted-logo">⭐ متجر إلكتروني</div>
+                        <div class="trusted-logo">⭐ مدون عربي</div>
+                        <div class="trusted-logo">⭐ وكالة تسويق</div>
+                        <div class="trusted-logo">⭐ مطعم ومقهى</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="video-showcase">
+                    <div class="video-container">
+                        <div class="video-player">
+                            <div class="video-placeholder">
+                                <div class="play-button">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                                <div class="video-wave"></div>
+                            </div>
+                        </div>
+                        <div class="video-badge">
+                            <i class="fas fa-bolt"></i>
+                            تم الإنشاء خلال 45 ثانية
+                        </div>
+                    </div>
+                    
+                    <div class="floating-cards">
+                        <div class="floating-card card-1">
+                            <i class="fas fa-check-circle"></i>
+                            <span>فيديو جاهز للتسليم</span>
+                        </div>
+                        <div class="floating-card card-2">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span>ربح 500$ هذا الشهر</span>
+                        </div>
+                        <div class="floating-card card-3">
+                            <i class="fas fa-users"></i>
+                            <span>+50 عميل جديد</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 💰 قسم "كيف تربح مع VYRON" -->
+    <section class="earn-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>🚀 كيف تربح <span class="highlight">أموال حقيقية</span> مع VYRON؟</h2>
+                <p class="section-subtitle">طرق مجربة لتحقيق دخل من إنشاء الفيديوهات بالذكاء الاصطناعي</p>
+            </div>
+
+            <div class="earn-methods">
+                <div class="earn-method">
+                    <div class="method-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3>بيع فيديوهات للمتاجر</h3>
+                    <p>أنشئ فيديوهات إعلانية للتجار والمتاجر الإلكترونية بسعر 20-50$ للفيديو</p>
+                    <div class="method-stats">
+                        <span><strong>ربح شهري:</strong> 500-2000$</span>
+                        <span><strong>الوقت:</strong> 2-3 ساعات يومياً</span>
+                    </div>
+                    <button class="btn btn-outline" onclick="showCaseStudy('stores')">
+                        شاهد دراسة حالة حقيقية
+                    </button>
+                </div>
+
+                <div class="earn-method">
+                    <div class="method-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>خدمة للشركات الصغيرة</h3>
+                    <p>قدم خدمة إنشاء فيديوهات شهري للشركات الصغيرة بسعر 100-300$ شهرياً</p>
+                    <div class="method-stats">
+                        <span><strong>ربح شهري:</strong> 1000-5000$</span>
+                        <span><strong>الوقت:</strong> 3-5 ساعات يومياً</span>
+                    </div>
+                    <button class="btn btn-outline" onclick="showCaseStudy('businesses')">
+                        شاهد دراسة حالة حقيقية
+                    </button>
+                </div>
+
+                <div class="earn-method">
+                    <div class="method-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>قناة يوتيوب مربحة</h3>
+                    <p>أنشئ قناة يوتيوب تلقائية بالفيديوهات المولدة واربح من الإعلانات والروابط</p>
+                    <div class="method-stats">
+                        <span><strong>ربح شهري:</strong> 300-3000$</span>
+                        <span><strong>الوقت:</strong> 1-2 ساعة يومياً</span>
+                    </div>
+                    <button class="btn btn-outline" onclick="showCaseStudy('youtube')">
+                        شاهد دراسة حالة حقيقية
+                    </button>
+                </div>
+            </div>
+
+            <div class="earn-cta">
+                <div class="cta-content">
+                    <h3>💼 ابدأ مشروعك الخاص من اليوم!</h3>
+                    <p>لا تحتاج رأس مال - كل ما تحتاجه هو VYRON واتصال بالإنترنت</p>
+                    <button class="btn btn-primary btn-large" onclick="scrollToDemo()">
+                        <i class="fas fa-rocket"></i>
+                        ابدأ الربح الآن - مجاني
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✨ المميزات -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>✨ لماذا <span class="highlight">VYRON</span> أفضل منصة؟</h2>
+                <p class="section-subtitle">كل ما تحتاجه لإنشاء فيديوهات احترافية وتحقيق دخل مضمون</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>سرعة فائقة</h3>
+                    <p>أنشئ فيديو كامل خلال 30-60 ثانية فقط. لا حظر للانتظار أو تعقيد</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> معالجة فورية</li>
+                        <li><i class="fas fa-check"></i> لا حظر للانتظار</li>
+                        <li><i class="fas fa-check"></i> نتائج فورية</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>ربح مضمون</h3>
+                    <p>نضمن لك تحقيق ربح من أول فيديو. استرد أموالك إذا لم تربح</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> ضمان الربح</li>
+                        <li><i class="fas fa-check"></i> دعم مبيعات</li>
+                        <li><i class="fas fa-check"></i> عملاء جاهزون</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>ذكاء اصطناعي متقدم</h3>
+                    <p>أقوى نماذج الذكاء الاصطناعي لإنشاء فيديوهات بجودة احترافية حقيقية</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> جودة 4K</li>
+                        <li><i class="fas fa-check"></i> أصوات طبيعية</li>
+                        <li><i class="fas fa-check"></i> مشاهد متحركة</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>تدريب مجاني</h3>
+                    <p>تدريب كامل على كيفية التسعير، التسويق، وكسب العملاء بشكل عملي</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> دورة متكاملة</li>
+                        <li><i class="fas fa-check"></i> نماذج عقود</li>
+                        <li><i class="fas fa-check"></i> دعم مباشر</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>حقوق ملكية كاملة</h3>
+                    <p>احصل على حقوق الملكية الكاملة للفيديوهات التي تنشئها وبيعها كما تريد</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> حقوق بيع</li>
+                        <li><i class="fas fa-check"></i> استخدام تجاري</li>
+                        <li><i class="fas fa-check"></i> لا نسب مئوية</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>دعم فني عربي</h3>
+                    <p>فريق دعم عربي متاح 24/7 لمساعدتك في أي استفسار فني أو تسويقي</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> دعم فني</li>
+                        <li><i class="fas fa-check"></i> دعم تسويقي</li>
+                        <li><i class="fas fa-check"></i> استشارات مجانية</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🎬 قسم النماذج -->
+    <section id="examples" class="examples">
+        <div class="container">
+            <div class="section-header">
+                <h2>🎬 <span class="highlight">نماذج أعمال</span> حقيقية ربحة أموال</h2>
+                <p class="section-subtitle">شاهد فيديوهات حقيقية تم إنشاؤها بـ VYRON وربحت لأصحابها</p>
+            </div>
+
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-media">
+                        <div class="video-thumbnail">
+                            <div class="thumbnail-overlay">
+                                <i class="fas fa-play"></i>
+                                <span>شاهد الفيديو</span>
+                            </div>
+                            <div class="earning-badge">ربح: 150$</div>
+                        </div>
+                    </div>
+                    <div class="example-info">
+                        <h4>فيديو إعلاني لمتجر إلكتروني</h4>
+                        <p>فيديو 30 ثانية لمتجر ملابس - تم بيعه بـ 150$</p>
+                        <div class="example-stats">
+                            <span><i class="fas fa-clock"></i> 45 ثانية إنشاء</span>
+                            <span><i class="fas fa-dollar-sign"></i> ربح: 150$</span>
+                        </div>
+                        <button class="btn btn-small" onclick="showExample(1)">شاهد التفاصيل</button>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-media">
+                        <div class="video-thumbnail thumbnail-2">
+                            <div class="thumbnail-overlay">
+                                <i class="fas fa-play"></i>
+                                <span>شاهد الفيديو</span>
+                            </div>
+                            <div class="earning-badge">ربح: 300$</div>
+                        </div>
+                    </div>
+                    <div class="example-info">
+                        <h4>حملة فيديوهات لمطعم</h4>
+                        <p>5 فيديوهات شهرياً لمطعم - عقد 300$ شهري</p>
+                        <div class="example-stats">
+                            <span><i class="fas fa-clock"></i> 2 ساعة عمل</span>
+                            <span><i class="fas fa-dollar-sign"></i> ربح: 300$</span>
+                        </div>
+                        <button class="btn btn-small" onclick="showExample(2)">شاهد التفاصيل</button>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-media">
+                        <div class="video-thumbnail thumbnail-3">
+                            <div class="thumbnail-overlay">
+                                <i class="fas fa-play"></i>
+                                <span>شاهد الفيديو</span>
+                            </div>
+                            <div class="earning-badge">ربح: 1200$</div>
+                        </div>
+                    </div>
+                    <div class="example-info">
+                        <h4>قناة يوتيوب تلقائية</h4>
+                        <p>قناة يوتيوب آلية - 1200$ أرباح شهرياً</p>
+                        <div class="example-stats">
+                            <span><i class="fas fa-clock"></i> 1 ساعة يومياً</span>
+                            <span><i class="fas fa-dollar-sign"></i> ربح: 1200$</span>
+                        </div>
+                        <button class="btn btn-small" onclick="showExample(3)">شاهد التفاصيل</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 💵 الأسعار -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>💵 <span class="highlight">أسعار</span> تناسب الجميع</h2>
+                <p class="section-subtitle">ابدأ مجاناً واربح من أول فيديو. لا التزامات أو رسوم خفية</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="plan-header">
+                        <h3>🆓 البداية</h3>
+                        <div class="price">مجاني</div>
+                        <p>للتعرف على المنصة</p>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> فيديو تجريبي واحد</li>
+                        <li><i class="fas fa-check"></i> جودة 720p</li>
+                        <li><i class="fas fa-check"></i> دعم أساسي</li>
+                        <li><i class="fas fa-times"></i> <del>حقوق بيع</del></li>
+                        <li><i class="fas fa-times"></i> <del>4K</del></li>
+                    </ul>
+                    <button class="btn btn-outline" onclick="scrollToDemo()">جرب مجاناً</button>
+                </div>
+
+                <div class="pricing-card popular">
+                    <div class="popular-badge">الأكثر ربحاً</div>
+                    <div class="plan-header">
+                        <h3>🚀 المحترف</h3>
+                        <div class="price">4.99$ <span>/فيديو</span></div>
+                        <p>للربح الحقيقي</p>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> فيديوهات غير محدودة</li>
+                        <li><i class="fas fa-check"></i> جودة 4K</li>
+                        <li><i class="fas fa-check"></i> حقوق بيع كاملة</li>
+                        <li><i class="fas fa-check"></i> دعم مميز</li>
+                       
