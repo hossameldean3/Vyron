@@ -3,430 +3,899 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VYRON - أنشئ فيديوهات AI احترافية في دقائق | الربح من الذكاء الاصطناعي</title>
-    <meta name="description" content="أنشئ فيديوهات احترافية بالذكاء الاصطناعي في دقائق. لا تحتاج خبرة في التصميم. اربح من إنشاء فيديوهات للسوشيال ميديا، إعلانات، ومحتوى تعليمي.">
-    <meta name="keywords" content="فيديوهات ذكاء اصطناعي, صناعة فيديوهات, أرباح من الإنترنت, فيديوهات سوشيال ميديا">
+    <title>VYRON - Future in Motion</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* التنسيقات الأساسية */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #64748b;
+            --accent: #f59e0b;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --success: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* شريط التنقل */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-logo span {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .cta-button {
+            background: var(--primary);
+            color: white !important;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* القسم الرئيسي */
+        .hero {
+            padding: 120px 0 80px;
+            color: white;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .ai-text {
+            background: linear-gradient(45deg, var(--accent), #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            border: 2px solid white;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--dark);
+        }
+
+        .hero-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .feature-item i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            background: #000;
+        }
+
+        .demo-video {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .demo-video:hover {
+            transform: scale(1.02);
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 20px;
+        }
+
+        .video-container:hover .video-overlay {
+            opacity: 1;
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: rgba(245, 158, 11, 0.9);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .play-button:hover {
+            background: var(--accent);
+            transform: scale(1.1);
+        }
+
+        .video-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--dark);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .video-badge i {
+            color: var(--accent);
+        }
+
+        /* قسم الميزات */
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--light);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .feature-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: var(--secondary);
+            line-height: 1.6;
+        }
+
+        /* قسم الأسعار */
+        .pricing {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .pricing h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pricing-card.popular {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid var(--accent);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            color: var(--accent);
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            border: 2px solid white;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--dark);
+        }
+
+        /* قسم التجربة */
+        .demo {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .demo h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .demo p {
+            text-align: center;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+        }
+
+        .demo-example {
+            background: var(--light);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent);
+            font-style: italic;
+        }
+
+        .demo-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .demo-form textarea,
+        .demo-form input {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .demo-form textarea:focus,
+        .demo-form input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .demo-note {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-top: 1rem;
+        }
+
+        /* التذييل */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo h3 {
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--secondary);
+        }
+
+        /* التجاوب مع الشاشات المختلفة */
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .video-container {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            
+            .play-button {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .video-badge {
+                top: 10px;
+                left: 10px;
+                font-size: 0.7rem;
+            }
+        }
+
+        /* تأثيرات الظهور */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-    <!-- 🔥 شاشة التحميل -->
-    <div id="loading" class="loading-screen">
-        <div class="loading-content">
-            <div class="logo-animation">
-                <div class="logo-circle"></div>
-                <div class="logo-text">VYRON</div>
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>VYRON</h2>
+                <span>Future in Motion</span>
             </div>
-            <div class="loading-bar">
-                <div class="loading-progress"></div>
-            </div>
-            <p>جاري تحميل مستقبل الفيديو...</p>
-        </div>
-    </div>
-
-    <!-- 🎯 الهيدر -->
-    <header class="header">
-        <div class="container">
-            <div class="nav-wrapper">
-                <div class="brand">
-                    <div class="logo">
-                        <span class="logo-icon">🎬</span>
-                        <span class="logo-text">VYRON</span>
-                    </div>
-                    <span class="tagline">Future in Motion</span>
-                </div>
-
-                <nav class="nav" id="mainNav">
-                    <a href="#home" class="nav-link active">الرئيسية</a>
-                    <a href="#features" class="nav-link">المميزات</a>
-                    <a href="#examples" class="nav-link">نماذج أعمال</a>
-                    <a href="#pricing" class="nav-link">الأسعار</a>
-                    <a href="#testimonials" class="nav-link">آراء العملاء</a>
-                    <a href="#demo" class="nav-link cta-button">جرب مجاناً</a>
-                </nav>
-
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+            <div class="nav-menu">
+                <a href="#features">الميزات</a>
+                <a href="#pricing">الأسعار</a>
+                <a href="#demo">تجربة</a>
+                <a href="#waitlist" class="cta-button">انضم للقائمة</a>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- 🚀 الهيرو سيكشن -->
-    <section id="home" class="hero">
-        <div class="hero-background">
-            <div class="floating-shapes">
-                <div class="shape shape-1"></div>
-                <div class="shape shape-2"></div>
-                <div class="shape shape-3"></div>
-                <div class="shape shape-4"></div>
-            </div>
-        </div>
-        
-        <div class="container">
+    <!-- القسم الرئيسي -->
+    <section class="hero">
+        <div class="hero-container">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <i class="fas fa-bolt"></i>
-                    <span>المنصة العربية الأولى للفيديوهات بالذكاء الاصطناعي</span>
+                <h1>أنشئ فيديوهات <span class="ai-text">ذكية</span> في ثوانٍ</h1>
+                <p>منصة VYRON تمكنك من تحويل أفكارك إلى فيديوهات احترافية باستخدام الذكاء الاصطناعي</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary">ابدأ الآن</button>
+                    <button class="btn-secondary">انضم للقائمة</button>
                 </div>
-
-                <h1 class="hero-title">
-                    <span class="title-line">أنشئ فيديوهات</span>
-                    <span class="title-line highlight">إحترافية بالذكاء الاصطناعي</span>
-                    <span class="title-line">بدون أي خبرة تقنية!</span>
-                </h1>
-
-                <p class="hero-subtitle">
-                    حوّل أفكارك إلى فيديوهات مذهلة خلال دقائق. أربح من إنشاء محتوى لوسائل التواصل الاجتماعي، 
-                    الإعلانات، والفيديوهات التعليمية - كل ذلك بنقرة واحدة!
-                </p>
-
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-number" data-target="15427">0</div>
-                        <div class="stat-label">فيديو تم إنشاؤه</div>
+                <div class="hero-features">
+                    <div class="feature-item">
+                        <i class="fas fa-bolt"></i>
+                        <span>بدون إعداد - عينات فورية</span>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number" data-target="4895">0</div>
-                        <div class="stat-label">عميل راضي</div>
+                    <div class="feature-item">
+                        <i class="fas fa-credit-card"></i>
+                        <span>الدفع حسب الاستخدام</span>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number" data-target="98">0</div>
-                        <div class="stat-label">٪ رضا العملاء</div>
-                    </div>
-                </div>
-
-                <div class="hero-actions">
-                    <button class="btn btn-primary btn-large" onclick="scrollToDemo()">
-                        <i class="fas fa-play-circle"></i>
-                        أنشئ أول فيديو لك - مجاني
-                    </button>
-                    <button class="btn btn-secondary btn-large" onclick="showVideoExamples()">
-                        <i class="fas fa-eye"></i>
-                        شاهد نماذج أعمال حقيقية
-                    </button>
-                </div>
-
-                <div class="trusted-by">
-                    <p>موثوق من قبل:</p>
-                    <div class="trusted-logos">
-                        <div class="trusted-logo">⭐ متجر إلكتروني</div>
-                        <div class="trusted-logo">⭐ مدون عربي</div>
-                        <div class="trusted-logo">⭐ وكالة تسويق</div>
-                        <div class="trusted-logo">⭐ مطعم ومقهى</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="hero-visual">
-                <div class="video-showcase">
-                    <div class="video-container">
-                        <div class="video-player">
-                            <div class="video-placeholder">
-                                <div class="play-button">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                                <div class="video-wave"></div>
-                            </div>
-                        </div>
-                        <div class="video-badge">
-                            <i class="fas fa-bolt"></i>
-                            تم الإنشاء خلال 45 ثانية
-                        </div>
-                    </div>
-                    
-                    <div class="floating-cards">
-                        <div class="floating-card card-1">
-                            <i class="fas fa-check-circle"></i>
-                            <span>فيديو جاهز للتسليم</span>
-                        </div>
-                        <div class="floating-card card-2">
-                            <i class="fas fa-dollar-sign"></i>
-                            <span>ربح 500$ هذا الشهر</span>
-                        </div>
-                        <div class="floating-card card-3">
-                            <i class="fas fa-users"></i>
-                            <span>+50 عميل جديد</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 💰 قسم "كيف تربح مع VYRON" -->
-    <section class="earn-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>🚀 كيف تربح <span class="highlight">أموال حقيقية</span> مع VYRON؟</h2>
-                <p class="section-subtitle">طرق مجربة لتحقيق دخل من إنشاء الفيديوهات بالذكاء الاصطناعي</p>
-            </div>
-
-            <div class="earn-methods">
-                <div class="earn-method">
-                    <div class="method-icon">
-                        <i class="fas fa-store"></i>
-                    </div>
-                    <h3>بيع فيديوهات للمتاجر</h3>
-                    <p>أنشئ فيديوهات إعلانية للتجار والمتاجر الإلكترونية بسعر 20-50$ للفيديو</p>
-                    <div class="method-stats">
-                        <span><strong>ربح شهري:</strong> 500-2000$</span>
-                        <span><strong>الوقت:</strong> 2-3 ساعات يومياً</span>
-                    </div>
-                    <button class="btn btn-outline" onclick="showCaseStudy('stores')">
-                        شاهد دراسة حالة حقيقية
-                    </button>
-                </div>
-
-                <div class="earn-method">
-                    <div class="method-icon">
+                    <div class="feature-item">
                         <i class="fas fa-users"></i>
+                        <span>مصمم للمبدعين والعلامات التجارية</span>
                     </div>
-                    <h3>خدمة للشركات الصغيرة</h3>
-                    <p>قدم خدمة إنشاء فيديوهات شهري للشركات الصغيرة بسعر 100-300$ شهرياً</p>
-                    <div class="method-stats">
-                        <span><strong>ربح شهري:</strong> 1000-5000$</span>
-                        <span><strong>الوقت:</strong> 3-5 ساعات يومياً</span>
-                    </div>
-                    <button class="btn btn-outline" onclick="showCaseStudy('businesses')">
-                        شاهد دراسة حالة حقيقية
-                    </button>
-                </div>
-
-                <div class="earn-method">
-                    <div class="method-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>قناة يوتيوب مربحة</h3>
-                    <p>أنشئ قناة يوتيوب تلقائية بالفيديوهات المولدة واربح من الإعلانات والروابط</p>
-                    <div class="method-stats">
-                        <span><strong>ربح شهري:</strong> 300-3000$</span>
-                        <span><strong>الوقت:</strong> 1-2 ساعة يومياً</span>
-                    </div>
-                    <button class="btn btn-outline" onclick="showCaseStudy('youtube')">
-                        شاهد دراسة حالة حقيقية
-                    </button>
                 </div>
             </div>
-
-            <div class="earn-cta">
-                <div class="cta-content">
-                    <h3>💼 ابدأ مشروعك الخاص من اليوم!</h3>
-                    <p>لا تحتاج رأس مال - كل ما تحتاجه هو VYRON واتصال بالإنترنت</p>
-                    <button class="btn btn-primary btn-large" onclick="scrollToDemo()">
-                        <i class="fas fa-rocket"></i>
-                        ابدأ الربح الآن - مجاني
-                    </button>
+            <div class="hero-visual">
+                <div class="video-container">
+                    <!-- فيديو توضيحي - يمكن استبداله بفيديو حقيقي -->
+                    <video class="demo-video" controls poster="https://placehold.co/500x280/667eea/ffffff?text=VYRON+Demo+Video">
+                        <source src="https://assets.codepen.io/3364143/710.mp4" type="video/mp4">
+                        متصفحك لا يدعم تشغيل الفيديو.
+                    </video>
+                    <div class="video-overlay">
+                        <button class="play-button">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                    <div class="video-badge">
+                        <i class="fas fa-star"></i>
+                        فيديو توضيحي حقيقي
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ✨ المميزات -->
+    <!-- قسم الميزات -->
     <section id="features" class="features">
         <div class="container">
-            <div class="section-header">
-                <h2>✨ لماذا <span class="highlight">VYRON</span> أفضل منصة؟</h2>
-                <p class="section-subtitle">كل ما تحتاجه لإنشاء فيديوهات احترافية وتحقيق دخل مضمون</p>
-            </div>
-
+            <h2 class="fade-in">ما يمكن لـ VYRON فعله</h2>
             <div class="features-grid">
-                <div class="feature-card">
+                <div class="feature-card fade-in">
                     <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
+                        <i class="fas fa-text-height"></i>
                     </div>
-                    <h3>سرعة فائقة</h3>
-                    <p>أنشئ فيديو كامل خلال 30-60 ثانية فقط. لا حظر للانتظار أو تعقيد</p>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check"></i> معالجة فورية</li>
-                        <li><i class="fas fa-check"></i> لا حظر للانتظار</li>
-                        <li><i class="fas fa-check"></i> نتائج فورية</li>
-                    </ul>
+                    <h3>نص ← فيديو</h3>
+                    <p>حول النص إلى فيديوهات احترافية بضغطة زر</p>
                 </div>
-
-                <div class="feature-card">
+                <div class="feature-card fade-in">
                     <div class="feature-icon">
-                        <i class="fas fa-money-bill-wave"></i>
+                        <i class="fas fa-user-tie"></i>
                     </div>
-                    <h3>ربح مضمون</h3>
-                    <p>نضمن لك تحقيق ربح من أول فيديو. استرد أموالك إذا لم تربح</p>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check"></i> ضمان الربح</li>
-                        <li><i class="fas fa-check"></i> دعم مبيعات</li>
-                        <li><i class="fas fa-check"></i> عملاء جاهزون</li>
-                    </ul>
+                    <h3>عرض تقديمي بالذكاء الاصطناعي</h3>
+                    <p>أفاتار واقعية تتحدث بنصك المكتوب</p>
                 </div>
-
-                <div class="feature-card">
+                <div class="feature-card fade-in">
                     <div class="feature-icon">
-                        <i class="fas fa-robot"></i>
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3>ذكاء اصطناعي متقدم</h3>
-                    <p>أقوى نماذج الذكاء الاصطناعي لإنشاء فيديوهات بجودة احترافية حقيقية</p>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check"></i> جودة 4K</li>
-                        <li><i class="fas fa-check"></i> أصوات طبيعية</li>
-                        <li><i class="fas fa-check"></i> مشاهد متحركة</li>
-                    </ul>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>تدريب مجاني</h3>
-                    <p>تدريب كامل على كيفية التسعير، التسويق، وكسب العملاء بشكل عملي</p>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check"></i> دورة متكاملة</li>
-                        <li><i class="fas fa-check"></i> نماذج عقود</li>
-                        <li><i class="fas fa-check"></i> دعم مباشر</li>
-                    </ul>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>حقوق ملكية كاملة</h3>
-                    <p>احصل على حقوق الملكية الكاملة للفيديوهات التي تنشئها وبيعها كما تريد</p>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check"></i> حقوق بيع</li>
-                        <li><i class="fas fa-check"></i> استخدام تجاري</li>
-                        <li><i class="fas fa-check"></i> لا نسب مئوية</li>
-                    </ul>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>دعم فني عربي</h3>
-                    <p>فريق دعم عربي متاح 24/7 لمساعدتك في أي استفسار فني أو تسويقي</p>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check"></i> دعم فني</li>
-                        <li><i class="fas fa-check"></i> دعم تسويقي</li>
-                        <li><i class="fas fa-check"></i> استشارات مجانية</li>
-                    </ul>
+                    <h3>تحسين الجودة</h3>
+                    <p>حسن جودة الفيديو حتى 4K</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 🎬 قسم النماذج -->
-    <section id="examples" class="examples">
-        <div class="container">
-            <div class="section-header">
-                <h2>🎬 <span class="highlight">نماذج أعمال</span> حقيقية ربحة أموال</h2>
-                <p class="section-subtitle">شاهد فيديوهات حقيقية تم إنشاؤها بـ VYRON وربحت لأصحابها</p>
-            </div>
-
-            <div class="examples-grid">
-                <div class="example-card">
-                    <div class="example-media">
-                        <div class="video-thumbnail">
-                            <div class="thumbnail-overlay">
-                                <i class="fas fa-play"></i>
-                                <span>شاهد الفيديو</span>
-                            </div>
-                            <div class="earning-badge">ربح: 150$</div>
-                        </div>
-                    </div>
-                    <div class="example-info">
-                        <h4>فيديو إعلاني لمتجر إلكتروني</h4>
-                        <p>فيديو 30 ثانية لمتجر ملابس - تم بيعه بـ 150$</p>
-                        <div class="example-stats">
-                            <span><i class="fas fa-clock"></i> 45 ثانية إنشاء</span>
-                            <span><i class="fas fa-dollar-sign"></i> ربح: 150$</span>
-                        </div>
-                        <button class="btn btn-small" onclick="showExample(1)">شاهد التفاصيل</button>
-                    </div>
-                </div>
-
-                <div class="example-card">
-                    <div class="example-media">
-                        <div class="video-thumbnail thumbnail-2">
-                            <div class="thumbnail-overlay">
-                                <i class="fas fa-play"></i>
-                                <span>شاهد الفيديو</span>
-                            </div>
-                            <div class="earning-badge">ربح: 300$</div>
-                        </div>
-                    </div>
-                    <div class="example-info">
-                        <h4>حملة فيديوهات لمطعم</h4>
-                        <p>5 فيديوهات شهرياً لمطعم - عقد 300$ شهري</p>
-                        <div class="example-stats">
-                            <span><i class="fas fa-clock"></i> 2 ساعة عمل</span>
-                            <span><i class="fas fa-dollar-sign"></i> ربح: 300$</span>
-                        </div>
-                        <button class="btn btn-small" onclick="showExample(2)">شاهد التفاصيل</button>
-                    </div>
-                </div>
-
-                <div class="example-card">
-                    <div class="example-media">
-                        <div class="video-thumbnail thumbnail-3">
-                            <div class="thumbnail-overlay">
-                                <i class="fas fa-play"></i>
-                                <span>شاهد الفيديو</span>
-                            </div>
-                            <div class="earning-badge">ربح: 1200$</div>
-                        </div>
-                    </div>
-                    <div class="example-info">
-                        <h4>قناة يوتيوب تلقائية</h4>
-                        <p>قناة يوتيوب آلية - 1200$ أرباح شهرياً</p>
-                        <div class="example-stats">
-                            <span><i class="fas fa-clock"></i> 1 ساعة يومياً</span>
-                            <span><i class="fas fa-dollar-sign"></i> ربح: 1200$</span>
-                        </div>
-                        <button class="btn btn-small" onclick="showExample(3)">شاهد التفاصيل</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 💵 الأسعار -->
+    <!-- قسم الأسعار -->
     <section id="pricing" class="pricing">
         <div class="container">
-            <div class="section-header">
-                <h2>💵 <span class="highlight">أسعار</span> تناسب الجميع</h2>
-                <p class="section-subtitle">ابدأ مجاناً واربح من أول فيديو. لا التزامات أو رسوم خفية</p>
-            </div>
-
+            <h2 class="fade-in">خطط الأسعار</h2>
             <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="plan-header">
-                        <h3>🆓 البداية</h3>
-                        <div class="price">مجاني</div>
-                        <p>للتعرف على المنصة</p>
-                    </div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> فيديو تجريبي واحد</li>
-                        <li><i class="fas fa-check"></i> جودة 720p</li>
-                        <li><i class="fas fa-check"></i> دعم أساسي</li>
-                        <li><i class="fas fa-times"></i> <del>حقوق بيع</del></li>
-                        <li><i class="fas fa-times"></i> <del>4K</del></li>
+                <div class="pricing-card fade-in">
+                    <h3>Starter</h3>
+                    <div class="price">$0 / مجاني</div>
+                    <ul>
+                        <li>رصيد تجريبي</li>
+                        <li>أولوية في القائمة</li>
+                        <li>عينات فورية</li>
                     </ul>
-                    <button class="btn btn-outline" onclick="scrollToDemo()">جرب مجاناً</button>
+                    <button class="btn-outline">ابدأ مجاناً</button>
                 </div>
+                <div class="pricing-card popular fade-in">
+                    <div class="popular-badge">الأكثر شيوعاً</div>
+                    <h3>Pay-per-use</h3>
+                    <div class="price">بدءاً من $0.99 / مهمة</div>
+                    <ul>
+                        <li>مثالي للمبدعين والمسوقين</li>
+                        <li>مرونة في الدفع</li>
+                        <li>جودة عالية</li>
+                    </ul>
+                    <button class="btn-primary">اختر هذه الخطة</button>
+                </div>
+                <div class="pricing-card fade-in">
+                    <h3>Scale</h3>
+                    <div class="price">مخصص</div>
+                    <ul>
+                        <li>تكامل مع المؤسسات</li>
+                        <li>اتفاقيات مستوى الخدمة</li>
+                        <li>دعم مخصص</li>
+                    </ul>
+                    <button class="btn-outline">اتصل بنا</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="pricing-card popular">
-                    <div class="popular-badge">الأكثر ربحاً</div>
-                    <div class="plan-header">
-                        <h3>🚀 المحترف</h3>
-                        <div class="price">4.99$ <span>/فيديو</span></div>
-                        <p>للربح الحقيقي</p>
-                    </div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> فيديوهات غير محدودة</li>
-                        <li><i class="fas fa-check"></i> جودة 4K</li>
-                        <li><i class="fas fa-check"></i> حقوق بيع كاملة</li>
-                        <li><i class="fas fa-check"></i> دعم مميز</li>
-                       
+    <!-- قسم التجربة -->
+    <section id="demo" class="demo">
+        <div class="container">
+            <h2 class="fade-in">جرب النسخة التجريبية (سريعة)</h2>
+            <p>أدخل وصفاً قصيراً (10-30 كلمة)</p>
+            <div class="demo-example fade-in">
+                مثال: إعلان 10 ثوانٍ لقهوة صديقة للبيئة، طاقة إيجابية، نسبة 16:9
+            </div>
+            <div class="demo-form fade-in">
+                <textarea placeholder="اكتب وصف الفيديو الذي تريده هنا..." rows="4"></textarea>
+                <input type="email" placeholder="بريدك الإلكتروني (سنرسل النتيجة)">
+                <button class="btn-primary">أنشئ الفيديو</button>
+            </div>
+            <p class="demo-note">نعالج الطلبات التجريبية يدوياً خلال مرحلة MVP</p>
+        </div>
+    </section>
+
+    <!-- تذييل الصفحة -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>VYRON</h3>
+                    <p>Future in Motion</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#">الخصوصية</a>
+                    <a href="#">الشروط</a>
+                    <a href="#">اتصل بنا</a>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                © VYRON — Future in Motion
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // تأثير التمرير السلس للروابط
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // تأثير الظهور عند التمرير
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // تطبيق تأثيرات الظهور على العناصر
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // تأثير شريط التنقل
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // التحكم في الفيديو
+        const videoContainer = document.querySelector('.video-container');
+        const video = document.querySelector('.demo-video');
+        const playButton = document.querySelector('.play-button');
+        const videoOverlay = document.querySelector('.video-overlay');
+
+        if (video && playButton) {
+            // تشغيل/إيقاف الفيديو
+            playButton.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (video.paused) {
+                    video.play();
+                    videoOverlay.style.opacity = '0';
+                } else {
+                    video.pause();
+                }
+            });
+
+            // إظهار زر التشغيل عند التوقيف
+            video.addEventListener('pause', function() {
+                videoOverlay.style.opacity = '1';
+            });
+
+            // إخفاء زر التشغيل عند التشغيل
+            video.addEventListener('play', function() {
+                videoOverlay.style.opacity = '0';
+            });
+
+            // إعادة إظهار الزر عند انتهاء الفيديو
+            video.addEventListener('ended', function() {
+                videoOverlay.style.opacity = '1';
+            });
+        }
+
+        // معالجة نموذج التجربة
+        const demoForm = document.querySelector('.demo-form');
+        if (demoForm) {
+            const textarea = demoForm.querySelector('textarea');
+            const email = demoForm.querySelector('input[type="email"]');
+            const button = demoForm.querySelector('button');
+            
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (textarea.value.trim() && email.value.trim()) {
+                    // محاكاة إرسال النموذج
+                    const originalText = button.textContent;
+                    
+                    button.textContent = 'جاري المعالجة...';
+                    button.disabled = true;
+                    
+                    setTimeout(() => {
+                        button.textContent = 'تم الإرسال!';
+                        button.style.background = 'var(--success)';
+                        
+                        setTimeout(() => {
+                            button.textContent = originalText;
+                            button.disabled = false;
+                            button.style.background = '';
+                            textarea.value = '';
+                            email.value = '';
+                        }, 2000);
+                    }, 1500);
+                } else {
+                    alert('يرجى ملء جميع الحقول المطلوبة');
+                }
+            });
+        }
+
+        // تأثيرات إضافية للبطاقات
+        document.querySelectorAll('.pricing-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // تأثيرات الأزرار
+        document.querySelectorAll('.btn-primary, .btn-secondary, .btn-outline').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
